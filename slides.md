@@ -245,14 +245,42 @@ this is why you're here
 
 What if I told you...
 
-streams processing is something you can do in node?
+streams processing is
 
-You'd laugh because you already knew that.
+something you can do in node.js?
+
+^ You'd laugh because you already knew that.
 
 ---
 
 ## numbat-analyzer
 
-^ a work in progress
+### a work in progress
 
 ---
+
+## analyzer rules
+
+* javascript
+* duplex streams
+* redis available
+* metrics go in
+* alerts come out
+
+---
+
+## incident manager
+
+* a work in progress
+* `#staging-alerts`
+* `#production-alerts`
+* can trigger pagerduty (but isn't yet)
+
+---
+
+# your help needed
+
+* write metrics
+* write analyzer rules
+* help with numbat
+* https://github.com/numbat-metrics
