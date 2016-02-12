@@ -90,11 +90,13 @@ How about when your system is stressed?
 
 ## numbat was born
 
-How hard can it be? I said.
+### "How hard can it be?" I said.
 
 ---
 
 ![fit](images/processing_metrics.png)
+
+^ Weirdly this is pretty much what I ended up building.
 
 ---
 
@@ -132,6 +134,16 @@ that you should just do it
 
 ---
 
+# things that emit metrics
+
+* forza - disk space, cpu, memory  use
+* numbat-redis: polls redises for stats
+* numbat-haproxy: polls haproxies for stats
+* cron jobs that monitor couchdb
+* every node process we run
+
+---
+
 ## numbat-collector
 
 Where the metrics go.
@@ -165,36 +177,47 @@ All I need is a *timeseries* database!
 
 ## influxdb
 
-- easy to install (Go)
+- operationally easy (Go)
 - nice API with a good node client
 - pre 1.0
-- crashy
+- crashy; clustering is not good
 - API has thrashed
 
 ^ It's okay! it's pre 1.0!
 
 ---
 
-## grafana
+# grafana
 
-This does all our dashboards.
-
-
----
-
-The story could stop right there with graphs and nagios.
-
-But
+* dashboards!
+* graphs!
+* pretty things!
 
 ---
 
-### why not alert on metrics?
+![fit](images/graph-sample.png)
 
 ---
 
-Not a new question! Lots of systems do this.
+# but this is boring
 
-They're all weird or so use-specific that I couldn't imagine adapting them.
+The story could stop right here
+with graphs and nagios.
+
+But I wasn't satisfied.
+
+---
+
+# why not alert on metrics?
+
+---
+
+# everybody asks that question
+
+---
+
+## and then they write ad-hoc systems
+## that are hard to adapt for your use
 
 ---
 
@@ -205,6 +228,18 @@ They're all weird or so use-specific that I couldn't imagine adapting them.
 * configured with clojurescript
 
 A non-starter for us, but might be great if you need that throughput and are already using the jvm for things.
+
+---
+
+## why not reimann in node?
+
+configured in javascript?
+
+because I like javascript
+
+you like javascript too
+
+this is why you're here
 
 ---
 
