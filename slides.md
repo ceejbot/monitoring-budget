@@ -1,96 +1,219 @@
-## monitoring the
-## npm registry
-## on a *budget*
+# [fit] running the
+# [fit] ![inline](images/npm.png) registry
+# [fit] on a budget
 
 ---
 
-# nagios
+![left](images/bumper2_nasa_big.jpg)
+# [fit] C J Silverio
+## [fit] vp of engineering, ![](images/npm.png)
 
-solving the problem of the 90s
-with the technology of the 90s
+## [fit] @ceejbot
+
+^ How many of you have ever used npm to install something? How many of you use it daily? Yeah, that's a lot of you.
+
+---  
+
+# [fit] big numbers
+# [fit] \(and some small ones)
+
+---
+
+# [fit] 205 million packages Tuesday
+# [fit] 1 billion last week
+
+^ 205 million packages were downloaded on Tuesday. We're at 1 billion over the last week, and Monday was a US holiday.
+
+----
+
+# [fit] that's respectable
+
+^ That's starting to scale! Surely, CJ, you have a big team!
+
+---
+
+# [fit] npm is 25 people
+# [fit] 4 of them are the registry team
+
+^ We have 25 people now. When we started, it was 14 million / day with 5 people. Total. Most companies with services this large got there slowly and have staff to match. Not npm. We're a hobby project gone viral-- kaboom! If you're a javascript programmer, you're probably using us. Monitorama story.
+
+---
+
+# [fit] Success is often
+# [fit] a catastrophe
+
+---
+
+# [fit] Solve problems on a
+# [fit] shoestring budget
+
+^ True story: I was at monitorama and (story here)
+
+---
+
+# [fit] keep the registry up so
+# [fit] you never think about it
+
+---
+
+# [fit] 2 questions:
+# [fit] is the registry up?
+# [fit] how well is it performing?
+
+---
+
+# [fit] is the registry up?
+# [fit] monitoring
+
+---
+
+# [fit] how well is it performing?
+# [fit] metrics
+
+---
+
+# [fit] monitoring
+
+---
+
+# [fit] nagios
+# [fit] state of the art in free
+
+^ Trigger warning for web developers for the image I'm about to show.
 
 ---
 
 ![](images/nagios.png)
 
-^ This is awful information design
+^ This is awful information design. The depressing thing is it works.
 
 ---
 
-Nagios is very simple & reliable. The checks have a very simple API:
+# [fit] It's okay. We never look at it.
+# [fit] It just triggers Pager Duty.
 
-Print out a message, then exit with a status code.
-
-exit 0: okay
-exit 1: warning
-exit 2: critical
-exit 3: unknown
-
-^ We have lots of custom checks.
+^ Breathe.
 
 ---
 
-## Nagios != visibility.
-
-it's on/off: is this system responding?
-it doesn't attempt to tell you *why*
-something is happening.
+# [fit] monitoring == pull
+# [fit] ask questions that you
+# [fit] know the right answers for
 
 ---
 
-## to tell you *why*
-## you need metrics
+### [fit] Is this host up?
+### [fit] Is this cert about to expire?
+### [fit] Is the DB replication keeping up?
 
 ---
 
-# Q: What's a metric?
+# [fit] if you get the wrong answer
+# [fit] somebody gets paged
 
 ---
 
-### Q: What's a metric?
-### A: A name + a value + a time.
+# [fit] nagios's virtue:
+# [fit] custom checks
+
+^ is couchdb replicating? are our CDN's error rates low? Are we getting too many issues on our public issue tracker?
+
+---
+
+# [fit] self-healing checks
+# [fit] automate the fix if you can!
+
+^ Hot budget tip! Don't involve a human.
+
+---
+
+# [fit] monitoring == unit tests
+
+^ It's an engineering ratchet: you prevent yourself from having that bug again. After every production incident, we add monitoring.
+
+---
+
+# [fit] monitoring tells you what
+# [fit] it doesn't tell you why
+
+^ For that you need...
+
+---
+
+# [fit] metrics
+
+^ Metrics.
+
+---
+
+# [fit] Q: What's a metric?
+
+---
+
+### [fit] Q: What's a metric?
+### [fit] A: A name + a value + a time.
 
 ---
 
 ## kinds of metrics
 
-*counter*: this thing happened 10 times
-*timing*: this thing took X milliseconds to do
-*gauge*: this thing is Y sized right now
-*rate*: this thing is happening N times per second
+- counter: it happened __N__ times
+- timing: it took __X__ milliseconds to do
+- gauge: it's __Y__-sized right now
+- rate: it's happening __N__ times per second
 
 ---
 
-## examples
-
-`response.latency` 259ms @ 5:35pm
-
-`response.latency` 192ms @ 5:36pm
-
-`memory` 1.5GB @ 5:37pm
+# [fit] metrics == push
+# [fit] the service tells you numbers
 
 ---
 
-The canonical way to do this:
+# statsd ➜
+# graphite ➜
+# grafana
 
-emit metrics from each process
-statsd --> graphite
-
-statsd is unconfigurable & uses udp
-graphite is hell to set up & run
+^ State of the art in free
 
 ---
 
-Why don't you want to send metrics over udp?
+[grafana screenshot here]
 
-Well, do you care about getting them?
-How about when your system is stressed?
+^ This is grafana.
+
+---
+
+# [fit] I didn't like the
+# [fit] state of the art
+
+^ I am fussy.
+
+---
+
+* statsd is unconfigurable & uses UDP
+* graphite is [wincing gif]
+
+---
+
+# [fit] Q: Why not send metrics over UDP?
+
+## [fit] A: You care about receiving them.
+
+^ How about when your system is stressed?
+
+---
+
+# [fit] Also I couldn't afford it.
+# [fit] we're monitoring 400 processes right now.
+# [fit] we get X GB of log data a day
 
 ---
 
 ## numbat was born
 
 ### "How hard can it be?" I said.
+
+^ I wrote a manifesto with block diagrams and things. It was very blue-sky.
 
 ---
 
@@ -100,7 +223,15 @@ How about when your system is stressed?
 
 ---
 
-## numbat-emitter
+## https://github.com/numbat-metrics
+
+---
+
+![](images/Numbat_Full_Standing.jpg)
+
+^ We have a thing about cute Australian marsupials at npm. Don't ask me why.
+
+---
 
 ```js
 var Emitter = require('numbat-emitter');
@@ -134,153 +265,70 @@ that you should just do it
 
 ---
 
-# things that emit metrics
-
-* forza - disk space, cpu, memory  use
-* numbat-redis: polls redises for stats
-* numbat-haproxy: polls haproxies for stats
-* cron jobs that monitor couchdb
-* every node process we run
+Every host has a collector.
+The collector sends metrics to many destinations.
+One of them is influxdb.
+Grafana then draws pretty charts.
 
 ---
 
-## numbat-collector
-
-Where the metrics go.
-
-* one runs on every host on a well-known port
-* every process that wants to can send json-formatted metrics to that port
-* the collector collects from many sources & sends to many outputs
+we put [THIS MANY] metrics data points into Influx yesterday
 
 ---
 
-## many outputs
-
-Outputs are writable object-mode streams.
-
-- influxdb
-- graphite
-- another collector
-- numbat-analyzer
-- anything you want to implement
+![fit](images/user-acl-rollout.jpg)
 
 ---
 
-## Graphite
+![](images/user-acl-two-more.jpg)
 
-A major PITA to install.
-
-Surely there's something more modern.
-All I need is a *timeseries* database!
+^ These are not just pretty graphs! These four charts show a problem with a service we'd just started sending traffic to. Latencies shot up!
 
 ---
 
-## influxdb
+![](images/grafana-four-charts.jpg)
 
-- operationally easy (Go)
-- nice API with a good node client
-- pre 1.0
-- crashy; clustering is not good
-- API has thrashed
-
-^ It's okay! it's pre 1.0!
+^ The answer is here, in this second screenshot from the same page of graphics. The number queries used to answer handle that route was too high-- needed a redesign behind the scenes. Which we did. We spotted a db problem before we had it. Yay metrics!
 
 ---
 
-# grafana
+# [fit] metrics ➜ alerts
 
-* dashboards!
-* graphs!
-* pretty things!
+^ We've got a metrics analyzer yelling at very low latency into a slack channel when certain metrics go out of bounds.
 
 ---
 
-![fit](images/graph-sample.png)
+# [fit] anomaly detection
+# [fit] the real state of the art
+
+^ Humans are really good at this: we are walking pattern detection engines. You looked at that chart and saw a pattern & a violation of the pattern, and you asked a question about it.
 
 ---
 
-# but this is boring
+Once again, big companies have teams bigger than the entire registry team working on this problem.
 
-The story could stop right here
-with graphs and nagios.
-
-But I wasn't satisfied.
 
 ---
 
-# why not alert on metrics?
+# [fit] what: monitoring
+# [fit] yes/no questions
 
 ---
 
-# everybody asks that question
+# [fit] why: metrics
+# [fit] data changing over time
 
 ---
 
-## and then they write ad-hoc systems
-## that are hard to adapt for your use
+# [fit] next: anomaly detection
+# [fit] predictions & trends
 
 ---
 
-## reimann
-
-* omgwtfbbq ops/second
-* requires the jvm
-* configured with clojurescript
-
-A non-starter for us, but might be great if you need that throughput and are already using the jvm for things.
+# [fit] Don't guess.
+# [fit] Get data.
 
 ---
 
-## why not reimann in node?
-
-configured in javascript?
-
-because I like javascript
-
-you like javascript too
-
-this is why you're here
-
----
-
-What if I told you...
-
-streams processing is
-
-something you can do in node.js?
-
-^ You'd laugh because you already knew that.
-
----
-
-## numbat-analyzer
-
-### a work in progress
-
----
-
-## analyzer rules
-
-* javascript
-* duplex streams
-* redis available
-* metrics go in
-* alerts come out
-
----
-
-## incident manager
-
-* a work in progress
-* `#staging-alerts`
-* `#production-alerts`
-* can trigger pagerduty (but isn't yet)
-
----
-
-# your help needed
-
-* write metrics
-* write analyzer rules
-* help with numbat
-* https://github.com/numbat-metrics
+# [fit] `npm install -g npm@latest`
+# [fit] @ceejbot on all the things
