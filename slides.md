@@ -399,5 +399,6 @@ process.emit('metric', { name: 'heartbeat' });
 
 # [fit] `npm install -g npm@latest`
 # [fit] __@ceejbot__ on all the things
+# [fit] remember: npm loves you
 
-^ npm loves you.
+^ I'd be delighted to answer questions in the q&a session.
