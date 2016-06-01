@@ -1,5 +1,4 @@
-# [fit] running the
-# [fit] ![inline](images/npm.png) registry
+# [fit] monitoring
 # [fit] on a budget
 
 ---
@@ -20,13 +19,14 @@
 ---
 
 # [fit] 205 million packages Tuesday
-# [fit] 1 billion last week
+# [fit] 1 billion over the week
 
 ^ 205 million packages were downloaded on Tuesday. We're at 1 billion over the last week, and Monday was a US holiday.
 
 ----
 
 # [fit] that's respectable
+# [fit] that's starting to scale
 
 ^ That's starting to scale! Surely, CJ, you have a big team!
 
@@ -39,12 +39,12 @@
 
 ---
 
-# [fit] Success is often
+# [fit] success is often
 # [fit] a catastrophe
 
 ---
 
-# [fit] Solve problems on a
+# [fit] solve problems on a
 # [fit] shoestring budget
 
 ^ True story: I was at monitorama and (story here)
@@ -158,9 +158,9 @@
 ## kinds of metrics
 
 - counter: it happened __N__ times
-- timing: it took __X__ milliseconds to do
 - gauge: it's __Y__-sized right now
 - rate: it's happening __N__ times per second
+- timing: it took __X__ milliseconds to do
 
 ---
 
@@ -169,15 +169,20 @@
 
 ---
 
-# statsd ➜
-# graphite ➜
-# grafana
+# [fit] emit from a service
+# [fit] store in timeseries db
+# [fit] query & graph
+
+---
+
+# [fit] the usual stack
+# [fit] statsd ➜ graphite ➜ grafana
 
 ^ State of the art in free
 
 ---
 
-[grafana screenshot here]
+![](images/grafana_dashboard_ex1.png)
 
 ^ This is grafana.
 
@@ -192,20 +197,38 @@
 
 * statsd is unconfigurable & uses UDP
 * graphite is [wincing gif]
+* grafana is aces though!
 
 ---
 
 # [fit] Q: Why not send metrics over UDP?
-
 ## [fit] A: You care about receiving them.
 
 ^ How about when your system is stressed?
 
 ---
 
-# [fit] Also I couldn't afford it.
-# [fit] we're monitoring 400 processes right now.
-# [fit] we get X GB of log data a day
+# [fit] for-pay services can do better
+# [fit] but I can't afford them
+
+---
+
+# [fit] monitoring 400 processes right now
+# [fit] 12+ GB of log data a day
+
+^ For-pay services charge by volume, and volume is what the registry has.
+
+---
+
+# [fit] interlude:
+# [fit] when *should* you pay?
+
+---
+
+# [fit] convert the £$€ cost
+# [fit] into engineer hours/month
+
+^ Realistically, to get the same results, how much time would you have to spend to get the results from that service? Are you okay with the half-decent version you get doing it yourself? Are you ready to devote an engineer?
 
 ---
 
@@ -224,6 +247,11 @@
 ---
 
 ## https://github.com/numbat-metrics
+
+---
+
+# [fit] npm's stack
+# [fit] numbat ➜ influxdb ➜  grafana
 
 ---
 
@@ -250,18 +278,9 @@ process.emit('metric', { name: 'heartbeat' });
 
 ---
 
-## emitter conveniences
-
-* every metric has a *host* field with the hostname
-* if you don't provide a *value* it defaults to *1*
-* you don't need to hold onto the emitter object!
-* just emit *metric* events on the `process` global
-
----
-
 It's so easy to emit a metric
 any time something interesting happens
-that you should just do it
+that we just do it
 
 ---
 
@@ -272,11 +291,14 @@ Grafana then draws pretty charts.
 
 ---
 
-we put [THIS MANY] metrics data points into Influx yesterday
+# [fit] 4000 metrics/sec
+# [fit] from the registry
 
 ---
 
-![fit](images/user-acl-rollout.jpg)
+![fit](images/user-acl-two-response-codes.png)
+
+^ See some spikes? We flushed a cache last night!
 
 ---
 
@@ -298,6 +320,14 @@ we put [THIS MANY] metrics data points into Influx yesterday
 
 ---
 
+# [fit] Is a server handling traffic?
+# [fit] Is latency higher than normal?
+# [fit] Is your error rate higher than usual?
+
+^  Your metrics know, and can yell if you vary from it.
+
+---
+
 # [fit] anomaly detection
 # [fit] the real state of the art
 
@@ -305,7 +335,10 @@ we put [THIS MANY] metrics data points into Influx yesterday
 
 ---
 
-Once again, big companies have teams bigger than the entire registry team working on this problem.
+# [fit] numbat's stretch goal
+# [fit] \(the framework is there)
+
+^ Big companies like Twitter & Netflix have teams bigger than my entire registry team working on this, and there are some
 
 
 ---
