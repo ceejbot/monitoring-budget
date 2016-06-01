@@ -1,82 +1,96 @@
 # [fit] monitoring
+# [fit] the __npm__ registry
 # [fit] on a budget
 
 ---
 
-![left](images/bumper2_nasa_big.jpg)
+![left](images/chalkboard.gif)
 # [fit] C J Silverio
 ## [fit] vp of engineering, ![](images/npm.png)
 
-## [fit] @ceejbot
+## [fit] __@ceejbot__
 
-^ How many of you have ever used npm to install something? How many of you use it daily? Yeah, that's a lot of you.
+^ How many of you have ever used npm to install something? How many of you use it daily? Yeah, that's a lot of you. I'm going to talk about how I know you can install things.
 
----  
+---
 
-# [fit] big numbers
-# [fit] \(and some small ones)
+# [fit] let's talk __npm__
+# [fit] by the numbers
 
 ---
 
 # [fit] 205 million packages Tuesday
 # [fit] 1 billion over the week
+# [fit] 10K requests/sec
 
-^ 205 million packages were downloaded on Tuesday. We're at 1 billion over the last week, and Monday was a US holiday.
-
-----
-
-# [fit] that's respectable
-# [fit] that's starting to scale
-
-^ That's starting to scale! Surely, CJ, you have a big team!
+^ 205 million packages were downloaded on Tuesday. We're at 1 billion over the last week, and Monday was a US holiday.  That's starting to scale! Surely, CJ, you have a big team!
 
 ---
 
 # [fit] npm is 25 people
-# [fit] 4 of them are the registry team
+# [fit] 4 people run npm's registry
+# [fit] so you never think about it
 
 ^ We have 25 people now. When we started, it was 14 million / day with 5 people. Total. Most companies with services this large got there slowly and have staff to match. Not npm. We're a hobby project gone viral-- kaboom! If you're a javascript programmer, you're probably using us. Monitorama story.
 
 ---
 
 # [fit] success is often
-# [fit] a catastrophe
+# [fit] a __catastrophe__
+
+^ I'm an engineer, not an ops person, so I had to learn how to do this.
 
 ---
 
-# [fit] solve problems on a
-# [fit] shoestring budget
+![left,fit](images/reevaluates-life-decisions.gif)
+
+# [fit] big company numbers
+# [fit] tiny company staff
 
 ^ True story: I was at monitorama and (story here)
 
 ---
 
-# [fit] keep the registry up so
-# [fit] you never think about it
-
----
-
 # [fit] 2 questions:
-# [fit] is the registry up?
-# [fit] how well is it performing?
+# [fit] is the registry __up__?
+# [fit] how well is it __performing__?
+
+^ Two jargon words for each of those questions.
 
 ---
 
 # [fit] is the registry up?
-# [fit] monitoring
+# [fit] __monitoring__
 
 ---
 
 # [fit] how well is it performing?
-# [fit] metrics
+# [fit] __metrics__
 
 ---
 
-# [fit] monitoring
+# [fit] __monitoring__
 
 ---
 
-# [fit] nagios
+# [fit] monitoring == __pull__
+# [fit] ask questions that you
+# [fit] know the right answers for
+
+---
+
+### [fit] Is this host __up__?
+### [fit] Is this cert about to __expire__?
+### [fit] Is the DB replication __keeping up__?
+
+---
+
+# [fit] if you get the wrong answer
+# [fit] somebody gets __paged__
+
+---
+
+# [fit] __nagios__
 # [fit] state of the art in free
 
 ^ Trigger warning for web developers for the image I'm about to show.
@@ -96,45 +110,29 @@
 
 ---
 
-# [fit] monitoring == pull
-# [fit] ask questions that you
-# [fit] know the right answers for
-
----
-
-### [fit] Is this host up?
-### [fit] Is this cert about to expire?
-### [fit] Is the DB replication keeping up?
-
----
-
-# [fit] if you get the wrong answer
-# [fit] somebody gets paged
-
----
-
-# [fit] nagios's virtue:
-# [fit] custom checks
+# [fit] nagios's virtues:
+# [fit] __reliability__ & __custom__ checks
 
 ^ is couchdb replicating? are our CDN's error rates low? Are we getting too many issues on our public issue tracker?
 
 ---
 
 # [fit] self-healing checks
-# [fit] automate the fix if you can!
+# [fit] __automate__ the fix if you can!
 
-^ Hot budget tip! Don't involve a human.
-
----
-
-# [fit] monitoring == unit tests
-
-^ It's an engineering ratchet: you prevent yourself from having that bug again. After every production incident, we add monitoring.
+^ Hot budget tip! Don't involve a human. If your check can fix the bad condition, it should do so! Nobody needs to wake up.
 
 ---
 
-# [fit] monitoring tells you what
-# [fit] it doesn't tell you why
+# [fit] monitoring == __unit tests__
+# [fit] a ratchet for continuous improvement
+
+^ You prevent yourself from having that bug again. After every production incident, we add monitoring.
+
+---
+
+# [fit] monitoring tells you __what__
+# [fit] it doesn't tell you __why__
 
 ^ For that you need...
 
@@ -146,12 +144,8 @@
 
 ---
 
-# [fit] Q: What's a metric?
-
----
-
 ### [fit] Q: What's a metric?
-### [fit] A: A name + a value + a time.
+### [fit] A: A __name__ + a __value__ + a __time__.
 
 ---
 
@@ -162,16 +156,20 @@
 - rate: it's happening __N__ times per second
 - timing: it took __X__ milliseconds to do
 
+^ counter / gauge / rate / time
+
 ---
 
-# [fit] metrics == push
+# [fit] metrics == __push__
 # [fit] the service tells you numbers
 
+^ sometimes surprising ones
+
 ---
 
-# [fit] emit from a service
-# [fit] store in timeseries db
-# [fit] query & graph
+# [fit] __emit__ from a service
+# [fit] __store__ in timeseries db
+# [fit] __query__ & graph
 
 ---
 
@@ -195,9 +193,9 @@
 
 ---
 
-* statsd is unconfigurable & uses UDP
-* graphite is [wincing gif]
-* grafana is aces though!
+# __statsd__ uses UDP
+
+![left](images/disgusted-reaction.gif)
 
 ---
 
@@ -208,7 +206,13 @@
 
 ---
 
-# [fit] for-pay services can do better
+# just try to install __graphite__
+
+![left](images/igiveup.gif)
+
+---
+
+# [fit] for-pay/SAAS services can do better
 # [fit] but I can't afford them
 
 ---
@@ -221,28 +225,34 @@
 ---
 
 # [fit] interlude:
-# [fit] when *should* you pay?
+# [fit] when __should__ you pay?
 
 ---
 
-# [fit] convert the £$€ cost
+# [fit] convert the __£$€__ cost
 # [fit] into engineer hours/month
 
 ^ Realistically, to get the same results, how much time would you have to spend to get the results from that service? Are you okay with the half-decent version you get doing it yourself? Are you ready to devote an engineer?
 
 ---
 
-## numbat was born
+# [fit] pay when it's __cheaper__ than
+# [fit] investing an engineer
+# [fit] \(be __honest__ about the cost)
 
-### "How hard can it be?" I said.
-
-^ I wrote a manifesto with block diagrams and things. It was very blue-sky.
+^ Here, I had a clear case of better to build.
 
 ---
 
-![fit](images/processing_metrics.png)
+## [fit] __numbat__ was born
 
-^ Weirdly this is pretty much what I ended up building.
+### [fit] "How hard can it be?" I said.
+
+^ I wrote a manifesto with block diagrams and things. It was very blue-sky. Weirdly this is pretty much what I ended up building.
+
+---
+
+![fit](images/come-at-me-bro.gif)
 
 ---
 
@@ -250,8 +260,10 @@
 
 ---
 
-# [fit] npm's stack
-# [fit] numbat ➜ influxdb ➜  grafana
+# [fit] npm’s stack
+# [fit] numbat ➜ __influxdb__ ➜  grafana
+
+^ Influx is our timeseries db.
 
 ---
 
@@ -274,7 +286,7 @@ process.emit('metric', { name: 'disk.used.percent', value: 36 });
 process.emit('metric', { name: 'heartbeat' });
 ```
 
-^ Every service npm runs in production has one of these.
+^ Every service npm runs in production has one of these. Every host has a collector.
 
 ---
 
@@ -284,14 +296,7 @@ that we just do it
 
 ---
 
-Every host has a collector.
-The collector sends metrics to many destinations.
-One of them is influxdb.
-Grafana then draws pretty charts.
-
----
-
-# [fit] 4000 metrics/sec
+# [fit] __4000__ metrics/sec
 # [fit] from the registry
 
 ---
@@ -310,13 +315,13 @@ Grafana then draws pretty charts.
 
 ![](images/grafana-four-charts.jpg)
 
-^ The answer is here, in this second screenshot from the same page of graphics. The number queries used to answer handle that route was too high-- needed a redesign behind the scenes. Which we did. We spotted a db problem before we had it. Yay metrics!
+^ The answer is here, in this second screenshot from the same page of graphics. The number queries used to answer handle that route was too high-- needed a redesign behind the scenes. Which we did. We spotted a db problem before we had it. Yay metrics! But wait. There's more.
 
 ---
 
-# [fit] metrics ➜ alerts
+# [fit] metrics ➜ __alerts__
 
-^ We've got a metrics analyzer yelling at very low latency into a slack channel when certain metrics go out of bounds.
+^ We've got a metrics analyzer yelling at very low latency into a slack channel when certain metrics go out of bounds. All it takes to make this happen is a little javascript.
 
 ---
 
@@ -328,40 +333,52 @@ Grafana then draws pretty charts.
 
 ---
 
-# [fit] anomaly detection
-# [fit] the real state of the art
+# [fit] metrics comprise a __data stream__
+# [fit] send the stream to more than one place!
 
-^ Humans are really good at this: we are walking pattern detection engines. You looked at that chart and saw a pattern & a violation of the pattern, and you asked a question about it.
-
----
-
-# [fit] numbat's stretch goal
-# [fit] \(the framework is there)
-
-^ Big companies like Twitter & Netflix have teams bigger than my entire registry team working on this, and there are some
-
+^ To your timeseries db. To a process that does nothing but analyze them!
 
 ---
 
-# [fit] what: monitoring
+![left](images/charades.gif)
+# [fit] __anomaly__
+# [fit] __detection__
+
+^ Humans are really good at this: we are walking pattern detection engines. You looked at that chart and saw a pattern & a violation of the pattern, and you asked a question about it. My stretch goal. Big companies like Twitter & Netflix have teams bigger than my entire registry team working on this.
+
+---
+
+# [fit] know what your
+# [fit] services are up to
+# [fit] on the __cheap__
+
+---
+
+# [fit] what: __monitoring__
 # [fit] yes/no questions
 
 ---
 
-# [fit] why: metrics
+# [fit] why: __metrics__
 # [fit] data changing over time
 
 ---
 
-# [fit] next: anomaly detection
+# [fit] next: __anomaly detection__
 # [fit] predictions & trends
 
 ---
 
+![left](images/accept-it.gif)
 # [fit] Don't guess.
-# [fit] Get data.
+# [fit] Get __data__.
+
+^ You can do it without breaking the bank.
 
 ---
 
+# [fit] npm loves you
 # [fit] `npm install -g npm@latest`
-# [fit] @ceejbot on all the things
+# [fit] __@ceejbot__ on all the things
+
+^ npm loves you.
