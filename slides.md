@@ -17,37 +17,41 @@
 # [fit] let's talk __npm__
 # [fit] by the numbers
 
+^ The Twelfth Doctor will accompany us on this exploration of our numbers.
+
 ---
 
-# [fit] 205 million packages Tuesday
-# [fit] 1 billion over the week
-# [fit] 10K requests/sec
+# [fit] 205 __million__ packages Tuesday
+# [fit] __10K__ requests/sec
 
 ^ 205 million packages were downloaded on Tuesday. We're at 1 billion over the last week, and Monday was a US holiday.  That's starting to scale! Surely, CJ, you have a big team!
 
 ---
 
 # [fit] npm is 25 people
-# [fit] 4 people run npm's registry
-# [fit] so you never think about it
+# [fit] __4__ people run the registry
 
-^ We have 25 people now. When we started, it was 14 million / day with 5 people. Total. Most companies with services this large got there slowly and have staff to match. Not npm. We're a hobby project gone viral-- kaboom! If you're a javascript programmer, you're probably using us. Monitorama story.
+^ We have 25 people now. When we started, it was 14 million / day with 5 people. Total. Most companies with services this large got there slowly and have staff to match. Not npm. We're a hobby project gone viral-- kaboom! If you're a javascript programmer, you're probably using us.
 
 ---
 
 # [fit] success is often
 # [fit] a __catastrophe__
 
-^ I'm an engineer, not an ops person, so I had to learn how to do this.
+^ Especially when you're a hobby project, not a real company.
 
 ---
 
-![left,fit](images/reevaluates-life-decisions.gif)
+# [fit] __Twitter__ told us
+# [fit] when we were down
 
-# [fit] big company numbers
-# [fit] tiny company staff
+^ ulp
 
-^ True story: I was at monitorama and (story here)
+---
+
+![fit](images/reevaluates-life-decisions.gif)
+
+^ This was obviously no good, and I had to fix it. I'm an engineer, not an ops person, so I had to learn how to do this.
 
 ---
 
@@ -110,7 +114,7 @@
 
 ---
 
-# [fit] nagios's virtues:
+# [fit] nagios’s virtues:
 # [fit] __reliability__ & __custom__ checks
 
 ^ is couchdb replicating? are our CDN's error rates low? Are we getting too many issues on our public issue tracker?
@@ -138,7 +142,7 @@
 
 ---
 
-# [fit] metrics
+# [fit] __metrics__
 
 ^ Metrics.
 
@@ -146,6 +150,8 @@
 
 ### [fit] Q: What's a metric?
 ### [fit] A: A __name__ + a __value__ + a __time__.
+
+^ Stored in timeseries databases, which are built around the idea that you'll be fetching data based on time ranges.
 
 ---
 
@@ -192,10 +198,9 @@
 
 ---
 
-# [fit] I didn't like the
-# [fit] state of the art
+![fit](images/nononono.gif)
 
-^ I am fussy.
+^ I didn't like the state of the art. I am fussy.
 
 ---
 
@@ -208,7 +213,7 @@
 # [fit] Q: Why not send metrics over UDP?
 ## [fit] A: You care about receiving them.
 
-^ How about when your system is stressed?
+^ How about when your system is stressed? I'd tell you a udp joke, but I'm not sure you'd get it.
 
 ---
 
@@ -252,13 +257,15 @@
 
 ## [fit] __numbat__ was born
 
-### [fit] "How hard can it be?" I said.
+### [fit] “How hard can it be?” I said.
 
 ^ I wrote a manifesto with block diagrams and things. It was very blue-sky. Weirdly this is pretty much what I ended up building.
 
 ---
 
 ![fit](images/come-at-me-bro.gif)
+
+^ Turned out okay. Been in production about 18 months.
 
 ---
 
@@ -296,9 +303,9 @@ process.emit('metric', { name: 'heartbeat' });
 
 ---
 
-It's so easy to emit a metric
-any time something interesting happens
-that we just do it
+# [fit] so easy to emit a metric
+# [fit] that we just do it any time
+# [fit] something __interesting__ happens
 
 ---
 
@@ -335,9 +342,9 @@ that we just do it
 
 ---
 
-# [fit] Is a server handling traffic?
-# [fit] Is latency higher than normal?
-# [fit] Is your error rate higher than usual?
+# [fit] Server handling __expected__ traffic?
+# [fit] Latency higher than __normal__?
+# [fit] Error rate higher than __usual__?
 
 ^  Your metrics know, and can yell if you vary from it.
 
@@ -367,6 +374,8 @@ that we just do it
 # [fit] what: __monitoring__
 # [fit] yes/no questions
 
+^ Bread & butter. Do not do anything else until you can answer these.
+
 ---
 
 # [fit] why: __metrics__
@@ -379,15 +388,15 @@ that we just do it
 
 ---
 
-![left](images/accept-it.gif)
-# [fit] Don't guess.
-# [fit] Get __data__.
+# [fit] __Automate.__
+# [fit] Don't require humans.
 
 ^ You can do it without breaking the bank.
 
 ---
 
-# [fit] npm loves you
+![left](images/guitar-tank.png)
+
 # [fit] `npm install -g npm@latest`
 # [fit] __@ceejbot__ on all the things
 
