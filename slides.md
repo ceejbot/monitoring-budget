@@ -167,6 +167,12 @@
 
 ---
 
+![](images/listen.gif)
+
+^ Listen to your services.
+
+---
+
 # [fit] __emit__ from a service
 # [fit] __store__ in timeseries db
 # [fit] __query__ & graph
@@ -310,6 +316,10 @@ that we just do it
 ![](images/user-acl-two-more.jpg)
 
 ^ These are not just pretty graphs! These four charts show a problem with a service we'd just started sending traffic to. Latencies shot up!
+
+---
+
+![fit](images/cant-be-good.gif)
 
 ---
 
