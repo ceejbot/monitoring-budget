@@ -2,9 +2,11 @@
 # [fit] the __npm__ registry
 # [fit] on a budget
 
+^ There will be a few scattered animated gifs in my slides, as the 12th Doctor accompanies me.
+
 ---
 
-![left](images/chalkboard.gif)
+![left](images/12-with-parachute.jpg)
 # [fit] C J Silverio
 ## [fit] vp of engineering, ![](images/npm.png)
 
@@ -14,10 +16,11 @@
 
 ---
 
+![left](images/chalkboard.gif)
+
 # [fit] let's talk __npm__
 # [fit] by the numbers
 
-^ The Twelfth Doctor will accompany us on this exploration of our numbers.
 
 ---
 
@@ -28,10 +31,10 @@
 
 ---
 
-# [fit] npm is 25 people
-# [fit] __4__ people run the registry
+# [fit] npm is __25__ people
+# [fit] __4__ of us run the registry
 
-^ We have 25 people now. When we started, it was 14 million / day with 5 people. Total. Most companies with services this large got there slowly and have staff to match. Not npm. We're a hobby project gone viral-- kaboom! If you're a javascript programmer, you're probably using us.
+^ We have 25 people now. When we started, it was 14 million / day with 5 people. Total. Most companies with services this large got there slowly and have staff to match. Not npm. We're a hobby project gone viral! If you're a javascript programmer, you're probably using us.
 
 ---
 
@@ -45,13 +48,13 @@
 # [fit] __Twitter__ told us
 # [fit] when we were down
 
-^ ulp
+^ The state of our monitoring when I started was not great.
 
 ---
 
 ![fit](images/reevaluates-life-decisions.gif)
 
-^ This was obviously no good, and I had to fix it. I'm an engineer, not an ops person, so I had to learn how to do this.
+^ This was obviously intolerable, and I had to fix it. I'm an engineer, not an ops person, so I had to learn how to do this. I'm going to tell you what I learned. Serverless is nonsense, as we all know, so you have a service somewhere.
 
 ---
 
@@ -124,7 +127,7 @@
 # [fit] self-healing checks
 # [fit] __automate__ the fix if you can!
 
-^ Hot budget tip! Don't involve a human. If your check can fix the bad condition, it should do so! Nobody needs to wake up.
+^ Hot budget tip! Don't involve a human. If your check can fix the bad condition, it should do so! Nobody needs to wake up. E.g. couchdb replication failure can be automatically fixed.
 
 ---
 
@@ -132,6 +135,18 @@
 # [fit] a ratchet for continuous improvement
 
 ^ You prevent yourself from having that bug again. After every production incident, we add monitoring.
+
+---
+
+# [fit] __external__ monitoring
+# [fit] ping services
+
+^ We pay for this, because it's the most reliable way to get paged if we're down from the outside.
+
+---
+
+# [fit] you __must__ monitor
+# [fit] but that's just the start
 
 ---
 
@@ -162,20 +177,14 @@
 - rate: it's happening __N__ times per second
 - timing: it took __X__ milliseconds to do
 
-^ counter / gauge / rate / time
+^ counter / gauge / rate / time - these all have meaning in the context of your application.
 
 ---
 
 # [fit] metrics == __push__
-# [fit] the service tells you numbers
+# [fit] the app tells you numbers
 
 ^ sometimes surprising ones
-
----
-
-![](images/listen.gif)
-
-^ Listen to your services.
 
 ---
 
@@ -213,7 +222,7 @@
 # [fit] Q: Why not send metrics over UDP?
 ## [fit] A: You care about receiving them.
 
-^ How about when your system is stressed? I'd tell you a udp joke, but I'm not sure you'd get it.
+^ How about when your system is stressed? I'd tell you a UDP joke, but I'm not sure you'd get it.
 
 ---
 
@@ -223,15 +232,17 @@
 
 ---
 
-# [fit] for-pay/SAAS services can do better
+# [fit] for-pay/SAAS services exist
 # [fit] but I can't afford them
+
+^ They charge by volume and I have a lot of volume.
 
 ---
 
 # [fit] monitoring 400 processes right now
 # [fit] 12+ GB of log data a day
 
-^ For-pay services charge by volume, and volume is what the registry has.
+^ For-pay services charge by volume, and volume is what the registry has. Those 12G are just logs from our CDN, btw-- many multiples of that if we include server logs.
 
 ---
 
@@ -243,7 +254,7 @@
 # [fit] convert the __£$€__ cost
 # [fit] into engineer hours/month
 
-^ Realistically, to get the same results, how much time would you have to spend to get the results from that service? Are you okay with the half-decent version you get doing it yourself? Are you ready to devote an engineer?
+^ TIME. To get the same results, how much time would you have to spend to get the results from that service? Are you okay with the half-decent version you get doing it yourself? Are you ready to devote an engineer?
 
 ---
 
@@ -251,7 +262,7 @@
 # [fit] investing an engineer
 # [fit] \(be __honest__ about the cost)
 
-^ Here, I had a clear case of better to build.
+^ Here, I had a clear case of better to build, and I wanted a new side project anyway.
 
 ---
 
@@ -271,18 +282,20 @@
 
 ## https://github.com/numbat-metrics
 
----
-
-# [fit] npm’s stack
-# [fit] numbat ➜ __influxdb__ ➜  grafana
-
-^ Influx is our timeseries db.
+^ replaces statsd & its clients and it does a lot of OS & db-specific monitoring too!
 
 ---
 
 ![](images/Numbat_Full_Standing.jpg)
 
 ^ We have a thing about cute Australian marsupials at npm. Don't ask me why.
+
+---
+
+# [fit] npm’s stack
+# [fit] numbat ➜ __influxdb__ ➜  grafana
+
+^ Influx is our timeseries db.
 
 ---
 
@@ -294,12 +307,12 @@ var emitter = new Emitter({
     app: 'www',
 });
 
-process.emit('metric', { name: 'httpd.latency', value: 30 });
+process.emit('metric', { name: 'request.latency', value: 30 });
 process.emit('metric', { name: 'disk.used.percent', value: 36 });
-process.emit('metric', { name: 'heartbeat' });
+process.emit('metric', { name: 'login' });
 ```
 
-^ Every service npm runs in production has one of these. Every host has a collector.
+^ Every service npm runs in production has an emitter. Every host has a collector.
 
 ---
 
@@ -395,10 +408,9 @@ process.emit('metric', { name: 'heartbeat' });
 
 ---
 
-![left](images/guitar-tank.png)
-
+![fit, left](images/brushing-off-coat.gif)
 # [fit] `npm install -g npm@latest`
 # [fit] __@ceejbot__ on all the things
 # [fit] remember: npm loves you
 
-^ I'd be delighted to answer questions in the q&a session.
+^ upgrade!
