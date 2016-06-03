@@ -4,7 +4,7 @@
 ---
 
 # [fit] a few animated gifs
-# [fit] with the Twelfth Doctor & 0 cats
+# [fit] with the Twelfth Doctor (0 cats)
 
 ^ There will be a few scattered animated gifs in my slides, as the 12th Doctor accompanies me.
 
@@ -69,14 +69,14 @@
 
 ---
 
-# [fit] npm's scale: runaway success
-# [fit] npm's staff: wouldn't this be neat
+# [fit] npm's scale: runaway __success__
+# [fit] npm's staff: wouldn't this be __neat__
 
 ^ Disparity.
 
 ---
 
-# [fit] mission: fix it
+# [fit] mission: know this
 # [fit] on a __budget__
 
 ^ Everybody loves a challenge, right?
@@ -326,6 +326,7 @@
 ---
 
 ## https://github.com/numbat-metrics
+### __n__umbat - __p__owered __m__etrics
 
 ^ replaces statsd & its clients and it does a lot of OS & db-specific monitoring too!
 
@@ -423,6 +424,22 @@ process.emit('metric', { name: 'login' });
 
 ---
 
+![left](images/the_doctor_appears.jpg)
+
+# [fit] __recap__ time!
+
+---
+
+# [fit] your web apps are
+# [fit] backed by __something__
+
+---
+
+# [fit] what's it up to?
+# [fit] how do you know?
+
+---
+
 # [fit] __get data__ on what
 # [fit] your services are up to
 
@@ -438,10 +455,14 @@ process.emit('metric', { name: 'login' });
 # [fit] why: __metrics__
 # [fit] data changing over time
 
+^ Get answers to questions you didn't know you had.
+
 ---
 
 # [fit] next: __anomaly detection__
 # [fit] predictions & trends
+
+^ Statistical analysis of those numbers.
 
 ---
 
