@@ -100,6 +100,8 @@
 # [fit] is the registry up?
 # [fit] __monitoring__
 
+^ Very easily answered questions.
+
 ---
 
 # [fit] how well is it performing?
@@ -147,8 +149,10 @@
 
 ---
 
+![left](images/eyeroll.gif)
+
 # [fit] It's okay. We never look at it.
-# [fit] It just triggers Pager Duty.
+# [fit] It just triggers __Pager Duty__.
 
 ^ Breathe.
 
@@ -223,7 +227,7 @@
 ---
 
 # [fit] metrics == __push__
-# [fit] the app tells you numbers
+# [fit] the app gives you numbers
 
 ^ sometimes surprising ones
 
@@ -238,7 +242,7 @@
 # [fit] the usual stack
 # [fit] statsd ➜ graphite ➜ grafana
 
-^ State of the art in free
+^ State of the art in free. Statsd collects metrics formatted a specific way, aggregates a bit, and stores them in graphite. At your leisure, you look at graphs in grafana.
 
 ---
 
@@ -261,7 +265,7 @@
 ---
 
 # [fit] Q: Why not send metrics over UDP?
-## [fit] A: You care about receiving them.
+## [fit] A: You care about __receiving__ them.
 
 ^ I'd tell you a UDP joke, but I'm not sure you'd get it. How about when your system is stressed?
 
@@ -280,8 +284,8 @@
 
 ---
 
-# [fit] monitoring 400 processes right now
-# [fit] 12+ GB of log data a day
+# [fit] monitoring __400__ processes right now
+# [fit] __12+ GB__ of log data a day
 
 ^ For-pay services charge by volume, and volume is what the registry has. Those 12G are just logs from our CDN, btw-- many multiples of that if we include server logs.
 
@@ -451,6 +455,6 @@ process.emit('metric', { name: 'login' });
 ![fit, left](images/brushing-off-coat.gif)
 # [fit] `npm install -g npm@latest`
 # [fit] __@ceejbot__ on all the things
-# [fit] remember: npm loves you
+# [fit] npm loves __you__
 
 ^ upgrade!
