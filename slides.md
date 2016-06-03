@@ -1,6 +1,11 @@
 # [fit] monitoring
 # [fit] on a __budget__
 
+---
+
+# [fit] a few animated gifs
+# [fit] with the Twelfth Doctor & 0 cats
+
 ^ There will be a few scattered animated gifs in my slides, as the 12th Doctor accompanies me.
 
 ---
@@ -53,7 +58,7 @@
 # [fit] you pull them back in-house
 # [fit] when you __succeed__
 
-^ And usually when you have a larger team and some revenue or funding.
+^ You outgrow them. Usually by then you have a larger team and some revenue or funding.
 
 ---
 
@@ -67,18 +72,20 @@
 # [fit] npm's scale: runaway success
 # [fit] npm's staff: wouldn't this be neat
 
+^ Disparity.
+
 ---
 
-# [fit] into this I walk, with
 # [fit] mission: fix it
+# [fit] on a __budget__
 
-^ The state of our monitoring when I started was not great. Twitter told us we were down.
+^ Everybody loves a challenge, right?
 
 ---
 
 ![fit](images/reevaluates-life-decisions.gif)
 
-^ This was obviously intolerable, and I had to fix it. I'm an engineer, not an ops person, so I had to learn how to do this, and do it with not a lot of money and not a lot of people. I'm going to tell you what I learned.
+^ Lots of challenges here, but I'm going to concentrate on one of them: how we know we're up & running.
 
 ---
 
@@ -98,6 +105,8 @@
 # [fit] how well is it performing?
 # [fit] __metrics__
 
+^ Numbers and data that are application-specific.
+
 ---
 
 # [fit] __monitoring__
@@ -108,11 +117,15 @@
 # [fit] ask questions that you
 # [fit] know the right answers for
 
+^ Pull: the monitoring server knows what's supposed to be out there, because you told it what to look for.
+
 ---
 
 ### [fit] Is this host __up__?
 ### [fit] Is this cert about to __expire__?
 ### [fit] Is the DB replication __keeping up__?
+
+^ Yes/no questions.
 
 ---
 
@@ -145,6 +158,12 @@
 # [fit] __reliability__ & __custom__ checks
 
 ^ is couchdb replicating? are our CDN's error rates low? Are we getting too many issues on our public issue tracker?
+
+---
+
+# [fit] goal: __never__ page anybody
+
+^ Getting paged is stressful. We want it to be for real outages.
 
 ---
 
