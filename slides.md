@@ -1,6 +1,5 @@
 # [fit] monitoring
-# [fit] the __npm__ registry
-# [fit] on a budget
+# [fit] on a __budget__
 
 ^ There will be a few scattered animated gifs in my slides, as the 12th Doctor accompanies me.
 
@@ -21,7 +20,6 @@
 # [fit] let's talk __npm__
 # [fit] by the numbers
 
-
 ---
 
 # [fit] 205 __million__ packages Tuesday
@@ -34,27 +32,53 @@
 # [fit] npm is __25__ people
 # [fit] __4__ of us run the registry
 
-^ We have 25 people now. When we started, it was 14 million / day with 5 people. Total. Most companies with services this large got there slowly and have staff to match. Not npm. We're a hobby project gone viral! If you're a javascript programmer, you're probably using us.
+^ That's a tiny number of people supporting a lot of you all.
 
 ---
 
-# [fit] success is often
+# [fit] when the company was formed
+# [fit] __5__ people total
+
+^ We have 25 people now. When we started, it was 14 million / day with 5 people. Total. Most companies with services this large got there slowly and have staff to match. Not npm.
+
+---
+
+# [fit] you outsource many services
+# [fit] when you're __tiny__
+
+^ Because they're not your core competency, and you need to focus on building something your users want.
+
+---
+
+# [fit] you pull them back in-house
+# [fit] when you __succeed__
+
+^ And usually when you have a larger team and some revenue or funding.
+
+---
+
+# [fit] success is sometimes
 # [fit] a __catastrophe__
 
-^ Especially when you're a hobby project, not a real company.
+^ Especially when you're a hobby project gone viral, only recently turned into a real company.
 
 ---
 
-# [fit] __Twitter__ told us
-# [fit] when we were down
+# [fit] npm's scale: runaway success
+# [fit] npm's staff: wouldn't this be neat
 
-^ The state of our monitoring when I started was not great.
+---
+
+# [fit] into this I walk, with
+# [fit] mission: fix it
+
+^ The state of our monitoring when I started was not great. Twitter told us we were down.
 
 ---
 
 ![fit](images/reevaluates-life-decisions.gif)
 
-^ This was obviously intolerable, and I had to fix it. I'm an engineer, not an ops person, so I had to learn how to do this. I'm going to tell you what I learned. Serverless is nonsense, as we all know, so you have a service somewhere.
+^ This was obviously intolerable, and I had to fix it. I'm an engineer, not an ops person, so I had to learn how to do this, and do it with not a lot of money and not a lot of people. I'm going to tell you what I learned.
 
 ---
 
@@ -170,12 +194,10 @@
 
 ---
 
-## kinds of metrics
-
-- counter: it happened __N__ times
-- gauge: it's __Y__-sized right now
-- rate: it's happening __N__ times per second
-- timing: it took __X__ milliseconds to do
+# [fit] __counter:__ it happened __N__ times
+# [fit] __gauge:__ it's __Y__-sized right now
+# [fit] __rate:__ it's happening __N__ times/second
+# [fit] __timing:__ it took __X__ milliseconds
 
 ^ counter / gauge / rate / time - these all have meaning in the context of your application.
 
@@ -222,7 +244,7 @@
 # [fit] Q: Why not send metrics over UDP?
 ## [fit] A: You care about receiving them.
 
-^ How about when your system is stressed? I'd tell you a UDP joke, but I'm not sure you'd get it.
+^ I'd tell you a UDP joke, but I'm not sure you'd get it. How about when your system is stressed?
 
 ---
 
@@ -235,7 +257,7 @@
 # [fit] for-pay/SAAS services exist
 # [fit] but I can't afford them
 
-^ They charge by volume and I have a lot of volume.
+^ They charge by volume and I have a lot of volume. NewRelic. Rising Stack has an awesome node monitor service in beta.
 
 ---
 
@@ -378,9 +400,8 @@ process.emit('metric', { name: 'login' });
 
 ---
 
-# [fit] know what your
-# [fit] services are up to
-# [fit] on the __cheap__
+# [fit] __get data__ on what
+# [fit] your services are up to
 
 ---
 
@@ -401,8 +422,8 @@ process.emit('metric', { name: 'login' });
 
 ---
 
-# [fit] __Automate.__
-# [fit] Don't require humans.
+# [fit] __automate__
+# [fit] don't require humans
 
 ^ You can do it without breaking the bank.
 
