@@ -76,7 +76,7 @@
 
 ---
 
-# [fit] mission: know this
+# [fit] mission: run this
 # [fit] on a __budget__
 
 ^ Everybody loves a challenge, right?
